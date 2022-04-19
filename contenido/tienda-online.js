@@ -1,9 +1,4 @@
 
-
-// { especie: "", tipo: "", precio: , foto:"},
-//{ material: "", color:"", tamaño: , precio:  ,foto: "" }
-
-
 // PRODUCTOS 
 let listaProductos = [
     { categoria: "suculentas", especie: "haworthia", tipo: "fasciata", precio: 200, foto: "(./fotos/rsz_suculentas-2.jpg" },
@@ -25,27 +20,20 @@ let listaProductos = [
     { categoría: "macetas", material: "barro", color: "terracota", tamaño: 24, precio: 200 },
 ]
 
-// ${}
+let html = "";
 
 
-window.onload = mostrarProductos;
+window.onload = mostrarProductos(listaProductos);
 
-
-// recorrer array, x cada pd generar html + innerHTML  <div class="row row-cols-1 row-cols-md-3 g-4"> get elemen ID 
 
 function mostrarProductos(listaProductos) {
-    let producto = ""
+    
     for (let i = 0; i < listaProductos.length; i++) {
-        producto += document.getElementById("articulos").innerHTML = function generarHTML(listaProductos)
+        document.getElementById("articulos").innerHTML += generarHTML(listaProductos[i])
     }
-    return (producto)
+    
 }
 
-
-
-
-const producto = { especie: "haworthia", tipo: "fasciata", descripcion: "¡Suculenta ideal para interior! Ideal para lugares iluminados sin sol directo", precio: 200, foto: "(./fotos/rsz_suculentas-2.jpg" }
-let html = "";
 
 function generarHTML(producto) {
     html =
@@ -67,5 +55,25 @@ function generarHTML(producto) {
     return html
 }
 
+
+function generarHTML2(producto) {
+    html =
+        `<div class="col">
+        <div class="card">
+             <div title= "${producto.especie} ${producto.tipo}" class="cover cover-small"
+                style="background-image: url(${producto.foto})" ;>
+            </div>
+
+             <div class="card-body">
+                 <h5 class="card-title">${producto.especie} ${producto.tipo}</h5>
+                 <p>${producto.descripcion}</p>
+                 <span class="badge bg-dark">$${producto.precio}</span>
+
+                 </div>
+            </div >
+    </div > `
+
+    return html
+}
 
 
